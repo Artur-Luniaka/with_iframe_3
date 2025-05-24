@@ -1,10 +1,8 @@
 // Index page functionality
 document.addEventListener("DOMContentLoaded", function () {
-  // Проверяем, что скрипт запускается на главной странице или на index.html
   if (
-    window.location.pathname.endsWith("index.html") ||
-    window.location.pathname === "/" ||
-    window.location.pathname === "/index.html" // Добавим для надежности
+    window.location.pathname.endsWith("/") ||
+    window.location.pathname.endsWith("/index.html")
   ) {
     loadIndexContent();
     initIndexAnimations();
