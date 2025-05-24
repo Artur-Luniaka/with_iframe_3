@@ -49,8 +49,6 @@ function updateMetaTags(meta) {
 
 function loadReviews(reviews) {
     const reviewsContainer = document.getElementById('reviews-container');
-    if (!reviewsContainer) return;
-    
     reviewsContainer.innerHTML = '';
     
     reviews.forEach((review, index) => {
