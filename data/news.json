@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "title": "Rotation Chronicles - Latest News | Rotate to Escape",
+    "description": "Stay updated with the latest news, updates, and escape stories from the Rotate to Escape community."
+  },
+  "articles": [
+    {
+      "title": "Major Update: New Gravity-Defying Levels Released!",
+      "excerpt": "Experience the impossible with our latest update featuring 20 new levels that challenge everything you know about rotation physics. These mind-bending stages will test even the most skilled escape artists.",
+      "date": "2024-01-20",
+      "category": "Updates",
+      "image": "/placeholder.svg?height=250&width=400",
+      "featured": true,
+      "link": "#"
+    },
+    {
+      "title": "Player Spotlight: Record-Breaking 47-Second Nightmare Mode Clear",
+      "excerpt": "Meet Jessica 'SpinMaster' Liu, the Australian player who shattered the previous Nightmare Mode record. Learn her revolutionary rotation techniques and mental preparation strategies.",
+      "date": "2024-01-18",
+      "category": "Community",
+      "image": "/placeholder.svg?height=250&width=400",
+      "link": "#"
+    },
+    {
+      "title": "Global Rotation Championship 2024 - Registration Now Open",
+      "excerpt": "The biggest Rotate to Escape tournament returns! Compete against 10,000+ players worldwide for the $50,000 prize pool. Early bird registration includes exclusive practice levels.",
+      "date": "2024-01-15",
+      "category": "Events",
+      "image": "/placeholder.svg?height=250&width=400",
+      "link": "#"
+    },
+    {
+      "title": "Behind the Scenes: The Psychology of Rotation Puzzles",
+      "excerpt": "Our lead game designer reveals the cognitive science behind our level design. Discover how we create the perfect balance between challenge and satisfaction.",
+      "date": "2024-01-12",
+      "category": "Development",
+      "image": "/placeholder.svg?height=250&width=400",
+      "link": "#"
+    },
+    {
+      "title": "Community Challenge: Design Your Own Escape Room",
+      "excerpt": "Submit your level designs for a chance to see them featured in the game! Our level editor contest runs until February 29th with amazing prizes for winners.",
+      "date": "2024-01-10",
+      "category": "Community",
+      "image": "/placeholder.svg?height=250&width=400",
+      "link": "#"
+    },
+    {
+      "title": "Mobile Version Beta Testing Begins",
+      "excerpt": "Take the rotation challenge on the go! We're now accepting beta testers for the iOS and Android versions. Experience touch-optimized controls and exclusive mobile levels.",
+      "date": "2024-01-08",
+      "category": "Updates",
+      "image": "/placeholder.svg?height=250&width=400",
+      "link": "#"
+    },
+    {
+      "title": "Accessibility Update: New Features for All Players",
+      "excerpt": "Our latest accessibility update includes colorblind-friendly modes, reduced motion options, and improved screen reader support. Gaming should be inclusive for everyone.",
+      "date": "2024-01-05",
+      "category": "Updates",
+      "image": "/placeholder.svg?height=250&width=400",
+      "link": "#"
+    },
+    {
+      "title": "Year in Review: 2023's Most Challenging Escapes",
+      "excerpt": "Look back at the year's most difficult levels, surprising player strategies, and community achievements. Plus, get a sneak peek at what's coming in 2024!",
+      "date": "2024-01-01",
+      "category": "Community",
+      "image": "/placeholder.svg?height=250&width=400",
+      "link": "#"
+    }
+  ]
+}
