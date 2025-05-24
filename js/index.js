@@ -14,41 +14,53 @@ async function loadIndexContent() {
     const response = await fetch(`data/index.json?v=${Date.now()}`);
     const data = await response.json();
 
-    // Update meta tags
+    // Обновляем meta
     document.title = data.meta.title;
     document
       .querySelector('meta[name="description"]')
       .setAttribute("content", data.meta.description);
 
-    // Populate hero section
+    // Hero
     document.getElementById("hero-title").textContent = data.hero.title;
     document.getElementById("hero-description").textContent =
       data.hero.description;
 
-    // Populate sections
-    populateSection("welcome", data.sections.welcome);
-    populateSection("how-to-play", data.sections.howToPlay);
-    populateSection("tactics", data.sections.rotationTactics);
-    populateSection("traps", data.sections.trapsTimers);
-    populateSection("challenge", data.sections.escapeChallenge);
+    // Маппинг ключей JSON -> id HTML (без "-title" и "-content")
+    const sectionIdMap = {
+      welcome: "welcome",
+      howToPlay: "how-to-play",
+      rotationTactics: "tactics",
+      trapsTimers: "traps",
+      escapeChallenge: "challenge",
+    };
 
-    // Populate reviews
+    // Функция заполнения секции
+    function populateSection(jsonKey, sectionData) {
+      const htmlId = sectionIdMap[jsonKey];
+      if (!htmlId) {
+        console.warn(`No matching HTML id for section key "${jsonKey}"`);
+        return;
+      }
+      const titleEl = document.getElementById(`${htmlId}-title`);
+      const contentEl = document.getElementById(`${htmlId}-content`);
+      if (titleEl) titleEl.textContent = sectionData.title;
+      if (contentEl) contentEl.innerHTML = sectionData.content;
+    }
+
+    // Заполняем секции
+    for (const key in data.sections) {
+      populateSection(key, data.sections[key]);
+    }
+
+    // Заполняем отзывы
     populateReviews(data.reviews);
 
-    // Set up game iframe
+    // Загружаем игру
     document.getElementById("game-iframe").src = data.gameUrl;
   } catch (error) {
     console.error("Error loading index content:", error);
     showErrorMessage();
   }
-}
-
-function populateSection(sectionId, sectionData) {
-  const titleElement = document.getElementById(`${sectionId}-title`);
-  const contentElement = document.getElementById(`${sectionId}-content`);
-
-  if (titleElement) titleElement.textContent = sectionData.title;
-  if (contentElement) contentElement.innerHTML = sectionData.content;
 }
 
 function populateReviews(reviews) {
