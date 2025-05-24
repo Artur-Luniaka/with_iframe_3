@@ -1,36 +1,9 @@
 {
   "meta": {
-    "title": "Spin Your Questions Our Way! | Rotate to Escape",
-    "description": "Get in touch with the Rotate to Escape team. Send us your questions, feedback, or escape stories!"
+    "title": "Spin Your Questions Our Way - Contact Rotate to Escape",
+    "description": "Get in touch with the Rotate to Escape team. We're here to help with your questions, feedback, and support needs."
   },
-  "contact": {
-    "address": {
-      "street": "123 Rotation Street",
-      "city": "Sydney",
-      "state": "NSW",
-      "postcode": "2000",
-      "country": "Australia"
-    },
-    "phone": "+61 2 9876 5432",
-    "email": "hello@rotaetoescape.com.au",
-    "coordinates": {
-      "lat": -33.8688,
-      "lng": 151.2093
-    },
-    "businessHours": {
-      "monday": "9:00 AM - 6:00 PM",
-      "tuesday": "9:00 AM - 6:00 PM",
-      "wednesday": "9:00 AM - 6:00 PM",
-      "thursday": "9:00 AM - 6:00 PM",
-      "friday": "9:00 AM - 6:00 PM",
-      "saturday": "10:00 AM - 4:00 PM",
-      "sunday": "Closed"
-    },
-    "socialMedia": {
-      "twitter": "@RotateToEscape",
-      "facebook": "RotateToEscapeGame",
-      "instagram": "@rotatetoescape",
-      "youtube": "RotateToEscapeOfficial"
-    }
-  }
+  "pageTitle": "Spin Your Questions Our Way!",
+  "pageSubtitle": "We're here to help you navigate any challenges - just like in the game!",
+  "formTitle": "Send Us a Message"
 }

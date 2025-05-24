@@ -1,73 +1,65 @@
 {
   "meta": {
-    "title": "Rotation Chronicles - Latest News | Rotate to Escape",
-    "description": "Stay updated with the latest news, updates, and escape stories from the Rotate to Escape community."
+    "title": "Latest Rotations - Rotate to Escape News",
+    "description": "Stay updated with the latest news, updates, and community highlights from the Rotate to Escape universe."
   },
+  "pageTitle": "Latest Rotations",
+  "pageSubtitle": "Stay updated with the newest twists and turns in the Rotate to Escape universe",
   "articles": [
     {
-      "title": "Major Update: New Gravity-Defying Levels Released!",
-      "excerpt": "Experience the impossible with our latest update featuring 20 new levels that challenge everything you know about rotation physics. These mind-bending stages will test even the most skilled escape artists.",
-      "date": "2024-01-20",
+      "id": 1,
+      "title": "Major Update: 50 New Levels Added to Rotate to Escape!",
+      "excerpt": "We're thrilled to announce the biggest content update yet! Discover 50 brand new levels featuring innovative rotation mechanics, new trap types, and mind-bending puzzles that will test even the most experienced players.",
+      "content": "Full article content here...",
+      "image": "/placeholder.svg?height=300&width=500",
       "category": "Updates",
-      "image": "/placeholder.svg?height=250&width=400",
-      "featured": true,
-      "link": "#"
-    },
-    {
-      "title": "Player Spotlight: Record-Breaking 47-Second Nightmare Mode Clear",
-      "excerpt": "Meet Jessica 'SpinMaster' Liu, the Australian player who shattered the previous Nightmare Mode record. Learn her revolutionary rotation techniques and mental preparation strategies.",
-      "date": "2024-01-18",
-      "category": "Community",
-      "image": "/placeholder.svg?height=250&width=400",
-      "link": "#"
-    },
-    {
-      "title": "Global Rotation Championship 2024 - Registration Now Open",
-      "excerpt": "The biggest Rotate to Escape tournament returns! Compete against 10,000+ players worldwide for the $50,000 prize pool. Early bird registration includes exclusive practice levels.",
       "date": "2024-01-15",
-      "category": "Events",
-      "image": "/placeholder.svg?height=250&width=400",
-      "link": "#"
+      "featured": true
     },
     {
-      "title": "Behind the Scenes: The Psychology of Rotation Puzzles",
-      "excerpt": "Our lead game designer reveals the cognitive science behind our level design. Discover how we create the perfect balance between challenge and satisfaction.",
-      "date": "2024-01-12",
+      "id": 2,
+      "title": "Community Spotlight: Player Creates Incredible Speed Run Record",
+      "excerpt": "Australian player 'RotationMaster_AU' has shattered the previous speed run record, completing all 100 levels in just 47 minutes! Watch the incredible run and learn the advanced techniques used.",
+      "content": "Full article content here...",
+      "image": "/placeholder.svg?height=300&width=500",
+      "category": "Community",
+      "date": "2024-01-12"
+    },
+    {
+      "id": 3,
+      "title": "Developer Diary: The Art of Designing Rotation Puzzles",
+      "excerpt": "Go behind the scenes with our lead puzzle designer as they share insights into creating challenging yet fair rotation-based puzzles. Learn about the design philosophy that makes each level unique.",
+      "content": "Full article content here...",
+      "image": "/placeholder.svg?height=300&width=500",
       "category": "Development",
-      "image": "/placeholder.svg?height=250&width=400",
-      "link": "#"
+      "date": "2024-01-10"
     },
     {
-      "title": "Community Challenge: Design Your Own Escape Room",
-      "excerpt": "Submit your level designs for a chance to see them featured in the game! Our level editor contest runs until February 29th with amazing prizes for winners.",
-      "date": "2024-01-10",
-      "category": "Community",
-      "image": "/placeholder.svg?height=250&width=400",
-      "link": "#"
+      "id": 4,
+      "title": "Mobile Version Coming Soon: Rotate on the Go!",
+      "excerpt": "The mobile version of Rotate to Escape is entering final testing phases. Experience the same mind-bending puzzles with touch-optimized controls designed specifically for mobile devices.",
+      "content": "Full article content here...",
+      "image": "/placeholder.svg?height=300&width=500",
+      "category": "Announcements",
+      "date": "2024-01-08"
     },
     {
-      "title": "Mobile Version Beta Testing Begins",
-      "excerpt": "Take the rotation challenge on the go! We're now accepting beta testers for the iOS and Android versions. Experience touch-optimized controls and exclusive mobile levels.",
-      "date": "2024-01-08",
-      "category": "Updates",
-      "image": "/placeholder.svg?height=250&width=400",
-      "link": "#"
+      "id": 5,
+      "title": "Tips from the Pros: Advanced Rotation Strategies",
+      "excerpt": "Learn from the best players in the community! This comprehensive guide covers advanced techniques, optimal rotation patterns, and time-saving strategies for competitive play.",
+      "content": "Full article content here...",
+      "image": "/placeholder.svg?height=300&width=500",
+      "category": "Guides",
+      "date": "2024-01-05"
     },
     {
-      "title": "Accessibility Update: New Features for All Players",
-      "excerpt": "Our latest accessibility update includes colorblind-friendly modes, reduced motion options, and improved screen reader support. Gaming should be inclusive for everyone.",
-      "date": "2024-01-05",
-      "category": "Updates",
-      "image": "/placeholder.svg?height=250&width=400",
-      "link": "#"
-    },
-    {
-      "title": "Year in Review: 2023's Most Challenging Escapes",
-      "excerpt": "Look back at the year's most difficult levels, surprising player strategies, and community achievements. Plus, get a sneak peek at what's coming in 2024!",
-      "date": "2024-01-01",
-      "category": "Community",
-      "image": "/placeholder.svg?height=250&width=400",
-      "link": "#"
+      "id": 6,
+      "title": "Holiday Event: Festive Rotation Challenges Available Now",
+      "excerpt": "Celebrate the season with special holiday-themed levels! These limited-time challenges feature festive decorations and unique rotation mechanics. Complete them all to unlock exclusive rewards.",
+      "content": "Full article content here...",
+      "image": "/placeholder.svg?height=300&width=500",
+      "category": "Events",
+      "date": "2024-01-03"
     }
   ]
 }

@@ -2,195 +2,105 @@
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.9), rgba(0, 78, 137, 0.9)),
-                url('/placeholder.svg?height=800&width=1200') center/cover;
-    min-height: 100vh;
+    background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(0, 78, 137, 0.7)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/><circle cx="200" cy="150" r="30" fill="rgba(255,107,53,0.3)"/><circle cx="800" cy="300" r="40" fill="rgba(255,210,63,0.3)"/><circle cx="1000" cy="100" r="25" fill="rgba(255,107,53,0.3)"/></svg>');
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
     position: relative;
-    overflow: hidden;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(255, 210, 63, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(255, 107, 53, 0.3) 0%, transparent 50%);
-    animation: heroGlow 6s ease-in-out infinite alternate;
-}
-
-@keyframes heroGlow {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
 }
 
 .hero-content {
-    position: relative;
-    z-index: 2;
     max-width: 800px;
-    padding: var(--spacing-xl);
-}
-
-.hero-title {
-    font-size: var(--font-size-5xl);
-    margin-bottom: var(--spacing-lg);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: slideUp 1s ease-out;
-}
-
-.hero-subtitle {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-2xl);
-    opacity: 0.9;
-    animation: slideUp 1s ease-out 0.3s both;
-}
-
-.cta-button {
-    background: var(--accent-gradient);
-    color: var(--dark-color);
-    padding: var(--spacing-lg) var(--spacing-2xl);
-    font-size: var(--font-size-lg);
-    font-weight: bold;
-    border: none;
-    border-radius: var(--border-radius-lg);
-    cursor: pointer;
-    transition: all var(--transition-normal);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 8px 25px rgba(255, 210, 63, 0.3);
-    animation: slideUp 1s ease-out 0.6s both;
-}
-
-.cta-button:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 35px rgba(255, 210, 63, 0.4);
-}
-
-/* Content Grid */
-.content-grid {
-    display: flex;
-    gap: var(--spacing-2xl);
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.content-item {
-    flex: 1;
-    min-width: 280px;
-    text-align: center;
-    padding: var(--spacing-xl);
-    background: white;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--box-shadow);
-    transition: all var(--transition-normal);
-    position: relative;
-    overflow: hidden;
-}
-
-.content-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
-    transition: left var(--transition-slow);
-}
-
-.content-item:hover::before {
-    left: 100%;
-}
-
-.content-item:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--box-shadow-lg);
-}
-
-.icon-wrapper {
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--spacing-lg);
-    display: inline-block;
     padding: var(--spacing-lg);
-    background: var(--primary-gradient);
-    border-radius: 50%;
-    color: white;
-    transition: transform var(--transition-normal);
+    animation: slideInUp 1s ease-out;
 }
 
-.content-item:hover .icon-wrapper {
-    transform: rotate(360deg) scale(1.1);
-}
-
-.content-item h3 {
-    color: var(--dark-color);
+.hero-content h1 {
+    font-size: var(--font-size-4xl);
     margin-bottom: var(--spacing-md);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
     font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xl);
+    opacity: 0.95;
 }
 
-.content-item p {
-    color: var(--text-light);
-    line-height: 1.6;
-    margin-bottom: 0;
+/* Content Sections */
+.content-section .container {
+    animation: slideInUp 0.8s ease-out;
 }
 
-/* Feedback Section */
-.feedback-section {
-    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+.content-section h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: var(--secondary-color);
+    position: relative;
 }
 
+.content-section h2::after {
+    content: '🔄';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    animation: rotate 3s linear infinite;
+}
+
+/* Reviews Grid */
 .reviews-grid {
     display: flex;
-    gap: var(--spacing-xl);
     flex-wrap: wrap;
-    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
 }
 
 .review-card {
     flex: 1;
     min-width: 300px;
-    max-width: 400px;
     background: white;
-    padding: var(--spacing-xl);
     border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
     box-shadow: var(--box-shadow);
-    position: relative;
-    transition: transform var(--transition-normal);
+    transition: all var(--transition-normal);
+    border-left: 4px solid var(--primary-color);
 }
 
 .review-card:hover {
     transform: translateY(-5px);
+    box-shadow: var(--box-shadow-lg);
 }
 
-.review-card::before {
-    content: '"';
-    position: absolute;
-    top: -10px;
-    left: var(--spacing-lg);
-    font-size: 4rem;
-    color: var(--primary-color);
-    font-family: serif;
-    line-height: 1;
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
 }
 
-.review-text {
-    font-style: italic;
-    margin-bottom: var(--spacing-lg);
-    color: var(--text-color);
-    line-height: 1.7;
-}
-
-.review-author {
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
     font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-xs);
+    margin-right: var(--spacing-sm);
+}
+
+.review-info h4 {
+    margin: 0;
+    color: var(--secondary-color);
 }
 
 .review-rating {
@@ -198,175 +108,140 @@
     font-size: var(--font-size-lg);
 }
 
-/* Tactics Section */
-.tactics-grid {
-    display: flex;
-    gap: var(--spacing-xl);
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.tactic-card {
-    flex: 1;
-    min-width: 300px;
-    background: white;
-    padding: var(--spacing-xl);
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--box-shadow);
-    border-left: 5px solid var(--primary-color);
-    transition: all var(--transition-normal);
-    position: relative;
-}
-
-.tactic-card:hover {
-    transform: translateX(10px);
-    border-left-color: var(--accent-color);
-    box-shadow: var(--box-shadow-lg);
-}
-
-.tactic-card h3 {
-    color: var(--dark-color);
-    margin-bottom: var(--spacing-md);
-    font-size: var(--font-size-xl);
-}
-
-.tactic-card p {
+.review-text {
+    font-style: italic;
+    line-height: 1.6;
     color: var(--text-light);
-    line-height: 1.6;
-    margin-bottom: 0;
 }
 
-/* Dark Section */
-.dark-section {
-    background: var(--dark-gradient);
-    color: white;
-}
-
-.dark-section .section-title {
-    color: white;
-}
-
-.dark-section .section-title::after {
-    background: var(--accent-gradient);
-}
-
-.traps-content {
-    display: flex;
-    gap: var(--spacing-2xl);
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.trap-info {
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
-    padding: var(--spacing-xl);
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--border-radius-lg);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all var(--transition-normal);
-}
-
-.trap-info:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-5px);
-}
-
-.trap-info h3 {
-    color: var(--accent-color);
-    margin-bottom: var(--spacing-md);
-    font-size: var(--font-size-xl);
-}
-
-.trap-info p {
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.6;
-    margin-bottom: 0;
-}
-
-/* Game Section */
-.game-section {
-    background: linear-gradient(135deg, #f8f9fa, #ffffff);
-    text-align: center;
-}
-
+/* Game Container */
 .game-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: var(--spacing-xl);
-    background: white;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--box-shadow-lg);
-    margin: 0 auto;
-    max-width: 900px;
+    margin-top: var(--spacing-xl);
+    text-align: center;
 }
 
 .game-container iframe {
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: transform var(--transition-normal);
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--box-shadow-lg);
 }
 
-.game-container iframe:hover {
-    transform: scale(1.02);
+/* Challenge Background */
+.challenge-bg {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 78, 137, 0.1));
+    position: relative;
+}
+
+.challenge-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(255, 210, 63, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+/* Tactics and Traps Sections */
+.tactics-grid,
+.traps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.tactic-item,
+.trap-item {
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.tactic-item:hover,
+.trap-item:hover {
+    transform: scale(1.05);
+    box-shadow: var(--box-shadow-lg);
+}
+
+.tactic-icon,
+.trap-icon {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-sm);
+    display: block;
+}
+
+.tactic-item h3,
+.trap-item h3 {
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: var(--font-size-4xl);
+    .hero-section {
+        min-height: 60vh;
+        padding: var(--spacing-lg) 0;
     }
     
-    .hero-subtitle {
+    .hero-content h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero-content p {
         font-size: var(--font-size-lg);
     }
     
-    .content-grid,
-    .reviews-grid,
-    .tactics-grid,
-    .traps-content {
+    .content-section h2::after {
+        display: none;
+    }
+    
+    .reviews-grid {
         flex-direction: column;
-        gap: var(--spacing-lg);
     }
     
-    .content-item,
-    .review-card,
-    .tactic-card,
-    .trap-info {
-        min-width: auto;
-    }
-    
-    .game-container {
-        padding: var(--spacing-md);
+    .review-card {
+        min-width: 100%;
     }
     
     .game-container iframe {
-        width: 100%;
         height: 400px;
+    }
+    
+    .tactics-grid,
+    .traps-grid {
+        flex-direction: column;
+    }
+    
+    .tactic-item,
+    .trap-item {
+        min-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     .hero-content {
-        padding: var(--spacing-md);
+        padding: var(--spacing-sm);
     }
     
-    .cta-button {
-        padding: var(--spacing-md) var(--spacing-xl);
-        font-size: var(--font-size-base);
+    .review-header {
+        flex-direction: column;
+        text-align: center;
     }
     
-    .content-item,
-    .review-card,
-    .tactic-card,
-    .trap-info {
-        padding: var(--spacing-lg);
-    }
-    
-    .game-container iframe {
-        height: 300px;
+    .review-avatar {
+        margin-right: 0;
+        margin-bottom: var(--spacing-xs);
     }
 }

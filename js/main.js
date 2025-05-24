@@ -1,4 +1,4 @@
-// Import all JavaScript modules
+// Import all JavaScript files
 import './header.js';
 import './footer.js';
 import './index.js';
@@ -11,17 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize smooth scrolling for anchor links
     initSmoothScrolling();
     
-    // Initialize scroll animations
-    initScrollAnimations();
+    // Initialize loading animations
+    initLoadingAnimations();
     
-    // Initialize loading states
-    initLoadingStates();
-    
-    // Add scroll effect to header
-    initHeaderScrollEffect();
+    // Initialize responsive utilities
+    initResponsiveUtils();
 });
 
-// Smooth scrolling for anchor links
 function initSmoothScrolling() {
     const links = document.querySelectorAll('a[href^="#"]');
     
@@ -45,72 +41,63 @@ function initSmoothScrolling() {
     });
 }
 
-// Scroll animations
-function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+function initLoadingAnimations() {
+    // Add loading class to elements that will be populated by JSON
+    const loadingElements = document.querySelectorAll('[id*="title"], [id*="content"], [id*="description"]');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll(
-        '.content-item, .review-card, .tactic-card, .trap-info, .news-card, .contact-form, .contact-info'
-    );
-    
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-}
-
-// Loading states
-function initLoadingStates() {
-    // Add loading class to body initially
-    document.body.classList.add('loading');
-    
-    // Remove loading class when page is fully loaded
-    window.addEventListener('load', () => {
-        document.body.classList.remove('loading');
-        document.body.classList.add('loaded');
-    });
-}
-
-// Header scroll effect
-function initHeaderScrollEffect() {
-    const header = document.querySelector('.main-header');
-    let lastScrollY = window.scrollY;
-    
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        
-        if (currentScrollY > 100) {
-            header?.classList.add('scrolled');
-        } else {
-            header?.classList.remove('scrolled');
+    loadingElements.forEach(element => {
+        if (element.textContent === 'Loading...') {
+            element.classList.add('loading-text');
         }
-        
-        lastScrollY = currentScrollY;
+    });
+}
+
+function initResponsiveUtils() {
+    // Handle window resize events
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            // Trigger custom resize event for modules
+            window.dispatchEvent(new CustomEvent('optimizedResize'));
+        }, 250);
     });
 }
 
 // Utility functions
-window.scrollToGame = function() {
-    const gameSection = document.getElementById('escape-challenge');
-    if (gameSection) {
-        const headerHeight = document.querySelector('.main-header').offsetHeight;
-        const targetPosition = gameSection.offsetTop - headerHeight - 20;
+window.RotateToEscape = {
+    // Format date utility
+    formatDate: function(dateString) {
+        const options = { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        };
+        return new Date(dateString).toLocaleDateString('en-AU', options);
+    },
+    
+    // Create element utility
+    createElement: function(tag, className, content) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        if (content) element.innerHTML = content;
+        return element;
+    },
+    
+    // Show notification utility
+    showNotification: function(message, type = 'info') {
+        const notification = this.createElement('div', `notification notification-${type}`, message);
+        document.body.appendChild(notification);
         
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 100);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
     }
 };
