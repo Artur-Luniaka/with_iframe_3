@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function loadIndexContent() {
   try {
-    const response = await fetch("data/index.json");
+    const response = await fetch("/data/index.json");
     const data = await response.json();
 
     // Update meta tags
