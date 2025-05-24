@@ -5,8 +5,7 @@
   },
   "hero": {
     "title": "Master the Art of Rotation",
-    "description": "Welcome to Rotate to Escape - where every twist counts and every second matters. Can you think fast enough to escape?",
-    "buttonText": "Start Your Escape"
+    "description": "Welcome to Rotate to Escape - where every twist counts and every second matters. Can you think fast enough to escape?"
   },
   "sections": {
     "welcome": {
@@ -14,7 +13,7 @@
       "content": "<p>Step into a world where <span class='escape-highlight'>rotation is your salvation</span>. Rotate to Escape challenges your mind with intricate puzzles that require quick thinking, strategic planning, and perfect timing.</p><p>Each level presents a unique challenge where you must rotate elements to create the perfect path to freedom. With stunning visuals and increasingly complex puzzles, this game will test your spatial reasoning like never before.</p><div class='flex-grid'><div class='flex-grid-item card'><h3><span class='rotation-icon'>🧩</span> Mind-Bending Puzzles</h3><p>Over 100 carefully crafted levels that will challenge your problem-solving skills.</p></div><div class='flex-grid-item card'><h3><span class='rotation-icon'>⚡</span> Fast-Paced Action</h3><p>Race against time as you rotate your way to freedom in this thrilling escape adventure.</p></div></div>"
     },
     "howToPlay": {
-      "title": "How to Play",
+      "title": "Rotate Guide",
       "content": "<div class='flex-grid'><div class='flex-grid-item'><h3>🎯 Objective</h3><p>Navigate through each level by rotating puzzle pieces to create a clear path to the exit. Your goal is to escape before time runs out!</p></div><div class='flex-grid-item'><h3>🔄 Controls</h3><p>Use your mouse or touch controls to rotate elements. Click and drag to rotate pieces clockwise or counterclockwise. Some pieces can only rotate in specific directions.</p></div><div class='flex-grid-item'><h3>⏰ Time Pressure</h3><p>Each level has a time limit. Plan your moves carefully but act quickly - hesitation could trap you forever!</p></div><div class='flex-grid-item'><h3>🏆 Scoring</h3><p>Earn points based on completion time and efficiency. Fewer rotations and faster completion times yield higher scores.</p></div></div>"
     },
     "rotationTactics": {
@@ -62,5 +61,5 @@
       "text": "I'm usually not into puzzle games, but this one hooked me immediately. The rotation concept is genius!"
     }
   ],
-  "gameUrl": "https://example.com/rotate-to-escape-demo"
+  "gameUrl": "https://html5.gamemonetize.co/f58cns9ta0dmc04bwpq0mz0yrxy3gvcr/"
 }

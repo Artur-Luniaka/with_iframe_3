@@ -18,7 +18,6 @@ async function loadIndexContent() {
         // Populate hero section
         document.getElementById('hero-title').textContent = data.hero.title;
         document.getElementById('hero-description').textContent = data.hero.description;
-        document.getElementById('hero-button').textContent = data.hero.buttonText;
         
         // Populate sections
         populateSection('welcome', data.sections.welcome);

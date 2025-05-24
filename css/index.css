@@ -2,246 +2,273 @@
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(0, 78, 137, 0.7)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/><circle cx="200" cy="150" r="30" fill="rgba(255,107,53,0.3)"/><circle cx="800" cy="300" r="40" fill="rgba(255,210,63,0.3)"/><circle cx="1000" cy="100" r="25" fill="rgba(255,107,53,0.3)"/></svg>');
-    background-size: cover;
-    background-position: center;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    position: relative;
+  background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(0, 78, 137, 0.7)),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/><circle cx="200" cy="150" r="30" fill="rgba(255,107,53,0.3)"/><circle cx="800" cy="300" r="40" fill="rgba(255,210,63,0.3)"/><circle cx="1000" cy="100" r="25" fill="rgba(255,107,53,0.3)"/></svg>');
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  position: relative;
+  padding: 20px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 }
 
 .hero-content {
-    max-width: 800px;
-    padding: var(--spacing-lg);
-    animation: slideInUp 1s ease-out;
+  max-width: 800px;
+  padding: var(--spacing-lg);
+  animation: slideInUp 1s ease-out;
 }
 
 .hero-content h1 {
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--spacing-md);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-md);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content p {
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-xl);
-    opacity: 0.95;
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.95;
+}
+
+.hero-img {
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow-lg);
+
+  @media (min-width: 768px) {
+    width: 512px;
+  }
 }
 
 /* Content Sections */
 .content-section .container {
-    animation: slideInUp 0.8s ease-out;
+  animation: slideInUp 0.8s ease-out;
 }
 
 .content-section h2 {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-    color: var(--secondary-color);
-    position: relative;
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  color: var(--secondary-color);
+  position: relative;
 }
 
 .content-section h2::after {
-    content: '🔄';
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.8em;
-    animation: rotate 3s linear infinite;
+  content: "🔄";
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  animation: rotate 3s linear infinite;
 }
 
 /* Reviews Grid */
 .reviews-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-xl);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
 }
 
 .review-card {
-    flex: 1;
-    min-width: 300px;
-    background: white;
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-lg);
-    box-shadow: var(--box-shadow);
-    transition: all var(--transition-normal);
-    border-left: 4px solid var(--primary-color);
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--box-shadow);
+  transition: all var(--transition-normal);
+  border-left: 4px solid var(--primary-color);
 }
 
 .review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow-lg);
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .review-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
 }
 
 .review-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--primary-gradient);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    margin-right: var(--spacing-sm);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-right: var(--spacing-sm);
 }
 
 .review-info h4 {
-    margin: 0;
-    color: var(--secondary-color);
+  margin: 0;
+  color: var(--secondary-color);
 }
 
 .review-rating {
-    color: var(--accent-color);
-    font-size: var(--font-size-lg);
+  color: var(--accent-color);
+  font-size: var(--font-size-lg);
 }
 
 .review-text {
-    font-style: italic;
-    line-height: 1.6;
-    color: var(--text-light);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text-light);
 }
 
 /* Game Container */
 .game-container {
-    margin-top: var(--spacing-xl);
-    text-align: center;
+  margin-top: var(--spacing-xl);
+  text-align: center;
 }
 
 .game-container iframe {
-    width: 100%;
-    max-width: 800px;
-    height: 600px;
-    border: none;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--box-shadow-lg);
+  width: 100%;
+  max-width: 800px;
+  height: 600px;
+  border: none;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
 }
 
 /* Challenge Background */
 .challenge-bg {
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(0, 78, 137, 0.1));
-    position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.1),
+    rgba(0, 78, 137, 0.1)
+  );
+  position: relative;
 }
 
 .challenge-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        radial-gradient(circle at 20% 20%, rgba(255, 210, 63, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 210, 63, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 107, 53, 0.1) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
 }
 
 /* Tactics and Traps Sections */
 .tactics-grid,
 .traps-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
 .tactic-item,
 .trap-item {
-    flex: 1;
-    min-width: 250px;
-    background: white;
-    border-radius: var(--border-radius);
-    padding: var(--spacing-md);
-    box-shadow: var(--box-shadow);
-    text-align: center;
-    transition: all var(--transition-normal);
+  flex: 1;
+  min-width: 250px;
+  background: white;
+  border-radius: var(--border-radius);
+  padding: var(--spacing-md);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: all var(--transition-normal);
 }
 
 .tactic-item:hover,
 .trap-item:hover {
-    transform: scale(1.05);
-    box-shadow: var(--box-shadow-lg);
+  transform: scale(1.05);
+  box-shadow: var(--box-shadow-lg);
 }
 
 .tactic-icon,
 .trap-icon {
-    font-size: var(--font-size-3xl);
-    margin-bottom: var(--spacing-sm);
-    display: block;
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-sm);
+  display: block;
 }
 
 .tactic-item h3,
 .trap-item h3 {
-    color: var(--secondary-color);
-    margin-bottom: var(--spacing-sm);
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-sm);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .hero-section {
-        min-height: 60vh;
-        padding: var(--spacing-lg) 0;
-    }
-    
-    .hero-content h1 {
-        font-size: var(--font-size-3xl);
-    }
-    
-    .hero-content p {
-        font-size: var(--font-size-lg);
-    }
-    
-    .content-section h2::after {
-        display: none;
-    }
-    
-    .reviews-grid {
-        flex-direction: column;
-    }
-    
-    .review-card {
-        min-width: 100%;
-    }
-    
-    .game-container iframe {
-        height: 400px;
-    }
-    
-    .tactics-grid,
-    .traps-grid {
-        flex-direction: column;
-    }
-    
-    .tactic-item,
-    .trap-item {
-        min-width: 100%;
-    }
+  .hero-section {
+    min-height: 60vh;
+    padding: var(--spacing-lg) 0;
+  }
+
+  .hero-content h1 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .hero-content p {
+    font-size: var(--font-size-lg);
+  }
+
+  .content-section h2::after {
+    display: none;
+  }
+
+  .reviews-grid {
+    flex-direction: column;
+  }
+
+  .review-card {
+    min-width: 100%;
+  }
+
+  .game-container iframe {
+    height: 400px;
+  }
+
+  .tactics-grid,
+  .traps-grid {
+    flex-direction: column;
+  }
+
+  .tactic-item,
+  .trap-item {
+    min-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
-    .hero-content {
-        padding: var(--spacing-sm);
-    }
-    
-    .review-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .review-avatar {
-        margin-right: 0;
-        margin-bottom: var(--spacing-xs);
-    }
+  .hero-content {
+    padding: var(--spacing-sm);
+  }
+
+  .review-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .review-avatar {
+    margin-right: 0;
+    margin-bottom: var(--spacing-xs);
+  }
 }

@@ -11,7 +11,7 @@
       "title": "Major Update: 50 New Levels Added to Rotate to Escape!",
       "excerpt": "We're thrilled to announce the biggest content update yet! Discover 50 brand new levels featuring innovative rotation mechanics, new trap types, and mind-bending puzzles that will test even the most experienced players.",
       "content": "Full article content here...",
-      "image": "/placeholder.svg?height=300&width=500",
+      "image": "./img/news-1.jpg",
       "category": "Updates",
       "date": "2024-01-15",
       "featured": true
@@ -21,7 +21,7 @@
       "title": "Community Spotlight: Player Creates Incredible Speed Run Record",
       "excerpt": "Australian player 'RotationMaster_AU' has shattered the previous speed run record, completing all 100 levels in just 47 minutes! Watch the incredible run and learn the advanced techniques used.",
       "content": "Full article content here...",
-      "image": "/placeholder.svg?height=300&width=500",
+      "image": "./img/news-2.png",
       "category": "Community",
       "date": "2024-01-12"
     },
@@ -30,7 +30,7 @@
       "title": "Developer Diary: The Art of Designing Rotation Puzzles",
       "excerpt": "Go behind the scenes with our lead puzzle designer as they share insights into creating challenging yet fair rotation-based puzzles. Learn about the design philosophy that makes each level unique.",
       "content": "Full article content here...",
-      "image": "/placeholder.svg?height=300&width=500",
+      "image": "./img/news-3.png",
       "category": "Development",
       "date": "2024-01-10"
     },
@@ -39,7 +39,7 @@
       "title": "Mobile Version Coming Soon: Rotate on the Go!",
       "excerpt": "The mobile version of Rotate to Escape is entering final testing phases. Experience the same mind-bending puzzles with touch-optimized controls designed specifically for mobile devices.",
       "content": "Full article content here...",
-      "image": "/placeholder.svg?height=300&width=500",
+      "image": "./img/news-4.png",
       "category": "Announcements",
       "date": "2024-01-08"
     },
@@ -48,7 +48,7 @@
       "title": "Tips from the Pros: Advanced Rotation Strategies",
       "excerpt": "Learn from the best players in the community! This comprehensive guide covers advanced techniques, optimal rotation patterns, and time-saving strategies for competitive play.",
       "content": "Full article content here...",
-      "image": "/placeholder.svg?height=300&width=500",
+      "image": "./img/news-5.png",
       "category": "Guides",
       "date": "2024-01-05"
     },
@@ -57,7 +57,7 @@
       "title": "Holiday Event: Festive Rotation Challenges Available Now",
       "excerpt": "Celebrate the season with special holiday-themed levels! These limited-time challenges feature festive decorations and unique rotation mechanics. Complete them all to unlock exclusive rewards.",
       "content": "Full article content here...",
-      "image": "/placeholder.svg?height=300&width=500",
+      "image": "./img/news-6.png",
       "category": "Events",
       "date": "2024-01-03"
     }

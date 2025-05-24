@@ -7,15 +7,11 @@
 
 .footer-content {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-lg);
 }
 
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-}
 
 .footer-section h3 {
     color: var(--accent-color);
