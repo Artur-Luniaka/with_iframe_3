@@ -1,8 +1,10 @@
 // Index page functionality
 document.addEventListener("DOMContentLoaded", function () {
+  // Проверяем, что скрипт запускается на главной странице или на index.html
   if (
     window.location.pathname.endsWith("index.html") ||
-    window.location.pathname === "/"
+    window.location.pathname === "/" ||
+    window.location.pathname === "/index.html" // Добавим для надежности
   ) {
     loadIndexContent();
     initIndexAnimations();
@@ -11,56 +13,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function loadIndexContent() {
   try {
-    const response = await fetch(`data/index.json?v=${Date.now()}`);
+    // Убедитесь, что путь к вашему JSON-файлу правильный
+    const response = await fetch("data/index.json"); // Исправлено: data.json
     const data = await response.json();
 
-    // Обновляем meta
+    // Update meta tags
     document.title = data.meta.title;
     document
       .querySelector('meta[name="description"]')
       .setAttribute("content", data.meta.description);
 
-    // Hero
+    // Populate hero section
     document.getElementById("hero-title").textContent = data.hero.title;
     document.getElementById("hero-description").textContent =
       data.hero.description;
 
-    // Маппинг ключей JSON -> id HTML (без "-title" и "-content")
-    const sectionIdMap = {
-      welcome: "welcome",
-      howToPlay: "how-to-play",
-      rotationTactics: "tactics",
-      trapsTimers: "traps",
-      escapeChallenge: "challenge",
-    };
+    // Populate sections
+    // Исправлены ID для соответствия HTML
+    populateSection("welcome", data.sections.welcome);
+    populateSection("how-to-play", data.sections.howToPlay); // howToPlay -> how-to-play
+    populateSection("tactics", data.sections.rotationTactics); // rotationTactics -> tactics
+    populateSection("traps", data.sections.trapsTimers); // trapsTimers -> traps
+    populateSection("challenge", data.sections.escapeChallenge); // escapeChallenge -> challenge
 
-    // Функция заполнения секции
-    function populateSection(jsonKey, sectionData) {
-      const htmlId = sectionIdMap[jsonKey];
-      if (!htmlId) {
-        console.warn(`No matching HTML id for section key "${jsonKey}"`);
-        return;
-      }
-      const titleEl = document.getElementById(`${htmlId}-title`);
-      const contentEl = document.getElementById(`${htmlId}-content`);
-      if (titleEl) titleEl.textContent = sectionData.title;
-      if (contentEl) contentEl.innerHTML = sectionData.content;
-    }
-
-    // Заполняем секции
-    for (const key in data.sections) {
-      populateSection(key, data.sections[key]);
-    }
-
-    // Заполняем отзывы
+    // Populate reviews
     populateReviews(data.reviews);
 
-    // Загружаем игру
-    document.getElementById("game-iframe").src = data.gameUrl;
+    // Set up game iframe
+    const gameIframe = document.getElementById("game-iframe");
+    if (gameIframe) {
+      gameIframe.src = data.gameUrl;
+    }
   } catch (error) {
     console.error("Error loading index content:", error);
     showErrorMessage();
   }
+}
+
+function populateSection(sectionId, sectionData) {
+  // В HTML ID должны быть с дефисами (например, welcome-title, welcome-content)
+  const titleElement = document.getElementById(`${sectionId}-title`);
+  const contentElement = document.getElementById(`${sectionId}-content`);
+
+  if (titleElement) titleElement.textContent = sectionData.title;
+  if (contentElement) contentElement.innerHTML = sectionData.content;
 }
 
 function populateReviews(reviews) {
@@ -86,15 +82,15 @@ function createReviewCard(review) {
   const stars = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
 
   card.innerHTML = `
-        <div class="review-header">
-            <div class="review-avatar">${review.name.charAt(0)}</div>
-            <div class="review-info">
-                <h4>${review.name}</h4>
-                <div class="review-rating">${stars}</div>
-            </div>
-        </div>
-        <p class="review-text">"${review.text}"</p>
-    `;
+          <div class="review-header">
+              <div class="review-avatar">${review.name.charAt(0)}</div>
+              <div class="review-info">
+                  <h4>${review.name}</h4>
+                  <div class="review-rating">${stars}</div>
+              </div>
+          </div>
+          <p class="review-text">"${review.text}"</p>
+      `;
 
   return card;
 }
@@ -104,7 +100,8 @@ function initIndexAnimations() {
   const heroButton = document.getElementById("hero-button");
   if (heroButton) {
     heroButton.addEventListener("click", function () {
-      document.getElementById("escape-challenge").scrollIntoView({
+      // id="escapeChallenge" в HTML должен быть escape-challenge в JS
+      document.getElementById("escapeChallenge").scrollIntoView({
         behavior: "smooth",
       });
     });
@@ -135,14 +132,14 @@ function showErrorMessage() {
   const main = document.querySelector("main");
   if (main) {
     main.innerHTML = `
-            <section class="content-section">
-                <div class="container">
-                    <div class="error-message">
-                        <h2>Oops! Something went wrong</h2>
-                        <p>We're having trouble loading the content. Please try refreshing the page.</p>
-                    </div>
-                </div>
-            </section>
-        `;
+              <section class="content-section">
+                  <div class="container">
+                      <div class="error-message">
+                          <h2>Oops! Something went wrong</h2>
+                          <p>We're having trouble loading the content. Please try refreshing the page.</p>
+                      </div>
+                  </div>
+              </section>
+          `;
   }
 }
