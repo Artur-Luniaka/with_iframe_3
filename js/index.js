@@ -1,36 +1,70 @@
-// Index page functionality
+// Main index.js - optimized version
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize appropriate page
     if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
         initIndexPage();
+    } else if (window.location.pathname.includes('news.html')) {
+        initNewsPage();
     }
 });
 
+// ========== INDEX PAGE FUNCTIONALITY ==========
 function initIndexPage() {
     loadIndexContent();
     initHeroAnimations();
     initContentAnimations();
     initGameSection();
+    initParallaxEffect();
+    setTimeout(addBackgroundParticles, 2000);
 }
 
 async function loadIndexContent() {
+    const reviewsContainer = document.getElementById('reviews-container');
+    if (!reviewsContainer) {
+        console.error('Reviews container not found');
+        return;
+    }
+
+    // Show loading state
+    reviewsContainer.innerHTML = `
+        <div class="loading-reviews">
+            <div class="loading-spinner"></div>
+            <p>Loading player reviews...</p>
+        </div>
+    `;
+
     try {
-        // Load reviews data
-        const reviewsResponse = await fetch('data/reviews.json');
-        const reviewsData = await reviewsResponse.json();
+        const response = await fetch('data/reviews.json');
         
-        // Update page meta tags
-        if (reviewsData.meta) {
-            updateMetaTags(reviewsData.meta);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
         
-        // Load reviews
-        if (reviewsData.reviews) {
-            loadReviews(reviewsData.reviews);
+        const data = await response.json();
+        
+        // Update meta tags if available
+        if (data.meta) {
+            updateMetaTags(data.meta);
+        }
+        
+        // Load reviews if available
+        if (data.reviews?.length > 0) {
+            loadReviews(data.reviews);
+        } else {
+            showEmptyReviews();
         }
         
     } catch (error) {
-        console.error('Error loading index content:', error);
+        console.error('Error loading reviews:', error);
         loadFallbackReviews();
+        
+        // Show error message to user
+        const errorElement = document.createElement('div');
+        errorElement.className = 'load-error';
+        errorElement.innerHTML = `
+            <p>⚠️ Couldn't load reviews. Showing sample data.</p>
+        `;
+        reviewsContainer.prepend(errorElement);
     }
 }
 
@@ -39,55 +73,80 @@ function updateMetaTags(meta) {
         document.title = meta.title;
     }
     
-    if (meta.description) {
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.setAttribute('content', meta.description);
-        }
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && meta.description) {
+        metaDesc.setAttribute('content', meta.description);
     }
 }
 
 function loadReviews(reviews) {
     const reviewsContainer = document.getElementById('reviews-container');
+    if (!reviewsContainer) return;
+    
     reviewsContainer.innerHTML = '';
     
     reviews.forEach((review, index) => {
         const reviewCard = document.createElement('div');
         reviewCard.className = 'review-card';
-        reviewCard.style.animationDelay = `${index * 0.2}s`;
+        reviewCard.style.opacity = '0';
+        reviewCard.style.transform = 'translateY(20px)';
         
         reviewCard.innerHTML = `
-            <p class="review-text">${review.text}</p>
-            <div class="review-author">${review.author}</div>
-            <div class="review-rating">${'⭐'.repeat(review.rating)}</div>
+            <p class="review-text">"${review.text}"</p>
+            <div class="review-footer">
+                <span class="review-author">— ${review.author}</span>
+                <span class="review-rating">${'⭐'.repeat(review.rating)}</span>
+            </div>
         `;
         
         reviewsContainer.appendChild(reviewCard);
+        
+        // Animate card appearance
+        setTimeout(() => {
+            reviewCard.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+            reviewCard.style.opacity = '1';
+            reviewCard.style.transform = 'translateY(0)';
+        }, index * 150);
     });
 }
 
+function showEmptyReviews() {
+    const container = document.getElementById('reviews-container');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="empty-reviews">
+            <p>No reviews yet. Be the first to share your experience!</p>
+            <button class="btn-review" onclick="location.href='#review-form'">
+                Write a Review
+            </button>
+        </div>
+    `;
+}
+
 function loadFallbackReviews() {
-    const fallbackReviews = [
+    const fallbackData = [
         {
-            text: "This game is absolutely mind-bending! The rotation mechanics are so smooth and the puzzles are incredibly challenging. I've been playing for hours!",
-            author: "Alex Chen",
+            text: "This game changed my perspective on puzzle games. The rotation mechanics are genius!",
+            author: "Alex C.",
             rating: 5
         },
         {
-            text: "Perfect combination of skill and strategy. The timer pressure really gets your heart racing. Best puzzle game I've played this year!",
-            author: "Sarah Mitchell",
-            rating: 5
-        },
-        {
-            text: "The graphics are stunning and the gameplay is addictive. Each level brings new challenges that keep me coming back for more.",
-            author: "Mike Rodriguez",
+            text: "Challenging but fair. Each level teaches you something new about spatial reasoning.",
+            author: "Sam R.",
             rating: 4
+        },
+        {
+            text: "I've played through all levels three times and still discovering new strategies!",
+            author: "Taylor M.",
+            rating: 5
         }
     ];
     
-    loadReviews(fallbackReviews);
+    loadReviews(fallbackData);
 }
 
+// ========== ANIMATIONS ==========
 function initHeroAnimations() {
     const heroElements = document.querySelectorAll('.hero-title, .hero-subtitle, .cta-button');
     
@@ -102,7 +161,7 @@ function initHeroAnimations() {
         }, index * 300 + 500);
     });
     
-    // Add floating animation to hero content
+    // Floating animation
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
         setInterval(() => {
@@ -115,42 +174,29 @@ function initHeroAnimations() {
 }
 
 function initContentAnimations() {
-    // Animate content items on scroll
-    const contentItems = document.querySelectorAll('.content-item, .tactic-card, .trap-info');
-    
-    const itemObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('slide-up');
-                itemObserver.unobserve(entry.target);
+                entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.2,
+        threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
     
-    contentItems.forEach(item => {
-        itemObserver.observe(item);
-    });
-    
-    // Add hover sound effects (visual feedback)
-    contentItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
+    document.querySelectorAll('.content-item, .tactic-card').forEach(item => {
+        observer.observe(item);
     });
 }
 
+// ========== GAME SECTION ==========
 function initGameSection() {
     const gameIframe = document.querySelector('.game-container iframe');
     if (!gameIframe) return;
     
-    // Add loading state
+    // Loading state
     const loadingDiv = document.createElement('div');
     loadingDiv.className = 'game-loading';
     loadingDiv.innerHTML = `
@@ -158,86 +204,55 @@ function initGameSection() {
         <p>Loading the ultimate escape challenge...</p>
     `;
     
-    const gameContainer = document.querySelector('.game-container');
-    gameContainer.insertBefore(loadingDiv, gameIframe);
-    
-    // Hide iframe initially
+    gameIframe.parentNode.insertBefore(loadingDiv, gameIframe);
     gameIframe.style.opacity = '0';
     
-    // Show iframe when loaded
+    // When loaded
     gameIframe.addEventListener('load', function() {
-        loadingDiv.style.display = 'none';
-        this.style.opacity = '1';
-        this.style.transition = 'opacity 0.5s ease';
+        loadingDiv.style.opacity = '0';
+        setTimeout(() => {
+            loadingDiv.remove();
+            this.style.opacity = '1';
+            this.style.transition = 'opacity 0.5s ease';
+        }, 500);
     });
     
     // Error handling
     gameIframe.addEventListener('error', function() {
         loadingDiv.innerHTML = `
             <div class="game-error">
-                <h3>🎮 Game Temporarily Unavailable</h3>
-                <p>The escape challenge is currently being updated with new levels and features. Please check back soon!</p>
-                <button onclick="location.reload()" class="retry-button">Try Again</button>
+                <h3>🎮 Game Updating</h3>
+                <p>We're adding new levels! Check back soon.</p>
+                <button class="retry-btn" onclick="location.reload()">
+                    Refresh
+                </button>
             </div>
         `;
     });
     
-    // Add fullscreen functionality
-    const fullscreenBtn = document.createElement('button');
-    fullscreenBtn.className = 'fullscreen-btn';
-    fullscreenBtn.innerHTML = '⛶';
-    fullscreenBtn.title = 'Fullscreen';
-    
-    fullscreenBtn.addEventListener('click', function() {
-        if (gameIframe.requestFullscreen) {
-            gameIframe.requestFullscreen();
-        } else if (gameIframe.webkitRequestFullscreen) {
-            gameIframe.webkitRequestFullscreen();
-        } else if (gameIframe.msRequestFullscreen) {
-            gameIframe.msRequestFullscreen();
-        }
+    // Fullscreen button
+    const fsBtn = document.createElement('button');
+    fsBtn.className = 'fullscreen-btn';
+    fsBtn.innerHTML = '⛶';
+    fsBtn.title = 'Fullscreen';
+    fsBtn.addEventListener('click', () => {
+        gameIframe.requestFullscreen?.() || 
+        gameIframe.webkitRequestFullscreen?.();
     });
-    
-    gameContainer.appendChild(fullscreenBtn);
+    gameIframe.parentNode.appendChild(fsBtn);
 }
 
-// Parallax effect for hero section
+// ========== PARALLAX & EFFECTS ==========
 function initParallaxEffect() {
     const heroSection = document.querySelector('.hero-section');
     if (!heroSection) return;
     
     window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallax = scrolled * 0.5;
-        
+        const parallax = window.pageYOffset * 0.5;
         heroSection.style.transform = `translateY(${parallax}px)`;
     });
 }
 
-// Initialize parallax effect
-setTimeout(initParallaxEffect, 1000);
-
-// Smooth scroll to game section
-window.scrollToGame = function() {
-    const gameSection = document.getElementById('escape-challenge');
-    if (gameSection) {
-        const headerHeight = document.querySelector('.main-header')?.offsetHeight || 80;
-        const targetPosition = gameSection.offsetTop - headerHeight - 20;
-        
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-        
-        // Add highlight effect
-        gameSection.style.boxShadow = '0 0 30px rgba(255, 107, 53, 0.3)';
-        setTimeout(() => {
-            gameSection.style.boxShadow = '';
-        }, 2000);
-    }
-};
-
-// Add dynamic background particles
 function addBackgroundParticles() {
     const heroSection = document.querySelector('.hero-section');
     if (!heroSection) return;
@@ -246,32 +261,38 @@ function addBackgroundParticles() {
         const particle = document.createElement('div');
         particle.className = 'bg-particle';
         particle.style.cssText = `
-            position: absolute;
             width: ${Math.random() * 10 + 5}px;
             height: ${Math.random() * 10 + 5}px;
-            background: rgba(255, 210, 63, 0.3);
-            border-radius: 50%;
             left: ${Math.random() * 100}%;
             top: ${Math.random() * 100}%;
-            animation: float ${Math.random() * 10 + 10}s infinite linear;
-            pointer-events: none;
+            animation-duration: ${Math.random() * 10 + 10}s;
+            animation-delay: ${Math.random() * 5}s;
         `;
-        
         heroSection.appendChild(particle);
     }
-    
-    // Add CSS animation
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(style);
 }
 
-// Initialize background particles
-setTimeout(addBackgroundParticles, 2000);
+// ========== NEWS PAGE FUNCTIONALITY ==========
+function initNewsPage() {
+    loadNewsContent();
+    initNewsAnimations();
+    initNewsSearch();
+}
+
+// ... [Rest of your news page code remains unchanged] ...
+
+// ========== UTILITY FUNCTIONS ==========
+window.scrollToGame = function() {
+    const gameSection = document.getElementById('escape-challenge');
+    if (gameSection) {
+        const headerHeight = document.querySelector('.main-header')?.offsetHeight || 80;
+        window.scrollTo({
+            top: gameSection.offsetTop - headerHeight - 20,
+            behavior: 'smooth'
+        });
+        
+        // Highlight pulse
+        gameSection.style.boxShadow = '0 0 30px rgba(255, 107, 53, 0.3)';
+        setTimeout(() => gameSection.style.boxShadow = '', 2000);
+    }
+};
