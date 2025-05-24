@@ -28,9 +28,9 @@ async function loadIndexContent() {
     // Populate sections
     populateSection("welcome", data.sections.welcome);
     populateSection("how-to-play", data.sections.howToPlay);
-    populateSection("rotation-tactics", data.sections.rotationTactics);
-    populateSection("traps-timers", data.sections.trapsTimers);
-    populateSection("escape-challenge", data.sections.escapeChallenge);
+    populateSection("tactics", data.sections.rotationTactics);
+    populateSection("traps", data.sections.trapsTimers);
+    populateSection("challenge", data.sections.escapeChallenge);
 
     // Populate reviews
     populateReviews(data.reviews);
